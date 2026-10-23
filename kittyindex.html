@@ -1,0 +1,235 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kittyloafs2-6767</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell">
+
+    <!-- Header and live game statistics -->
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">✿</span>
+        <div>
+          <h1>Kittyloafs<span>2-6767</span></h1>
+          <p>four lanes. four loafs. endless meows.</p>
+        </div>
+      </div>
+
+      <div class="top-stats">
+        <div class="stat">
+          <span>SCORE</span>
+          <strong id="score">0000</strong>
+        </div>
+
+        <div class="stat">
+          <span>MISSES</span>
+          <strong id="misses">0 / 2</strong>
+        </div>
+
+        <div class="stat">
+          <span>TIME</span>
+          <strong><span id="time">0.0</span><small>s</small></strong>
+        </div>
+
+        <div class="stat high-stat">
+          <span>BEST</span>
+          <strong id="highScore">0000</strong>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main game area -->
+    <section class="game-frame" aria-label="Four-lane cat game">
+
+      <!-- Background can be customized in script.js -->
+      <div class="game-backdrop" id="gameBackdrop"></div>
+
+      <!-- Exactly four fixed vertical lanes -->
+      <div class="lane-grid" id="laneGrid">
+
+        <div class="lane" data-lane="0">
+          <div class="lane-top">01 <span>Q</span></div>
+          <div class="lane-track"></div>
+          <button class="lane-hit" aria-label="Hit lane one">
+            <span>Q</span>
+          </button>
+        </div>
+
+        <div class="lane" data-lane="1">
+          <div class="lane-top">02 <span>W</span></div>
+          <div class="lane-track"></div>
+          <button class="lane-hit" aria-label="Hit lane two">
+            <span>W</span>
+          </button>
+        </div>
+
+        <div class="lane" data-lane="2">
+          <div class="lane-top">03 <span>E</span></div>
+          <div class="lane-track"></div>
+          <button class="lane-hit" aria-label="Hit lane three">
+            <span>E</span>
+          </button>
+        </div>
+
+        <div class="lane" data-lane="3">
+          <div class="lane-top">04 <span>R</span></div>
+          <div class="lane-track"></div>
+          <button class="lane-hit" aria-label="Hit lane four">
+            <span>R</span>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Hit zone indicator -->
+      <div class="hit-zone-label">
+        <span class="pulse-dot"></span>
+        HIT ZONE
+        <span class="zone-line"></span>
+      </div>
+
+      <!-- Gameplay messages -->
+      <div class="toast" id="toast" aria-live="polite"></div>
+
+      <!-- Main menu -->
+      <section class="screen menu-screen" id="menuScreen">
+        <div class="menu-card">
+
+          <div class="eyebrow">
+            <span>✦</span> THE LOAF ARCADE <span>✦</span>
+          </div>
+
+          <div class="hero-cat">ฅ^•ﻌ•^ฅ</div>
+
+          <h2>Kittyloafs<span>2-6767</span></h2>
+
+          <p class="menu-copy">
+            Catch the loafs in the glow.<br>
+            Miss twice and it's nap time.
+          </p>
+
+          <div class="difficulty-label">CHOOSE YOUR PACE</div>
+
+          <!-- Difficulty selection -->
+          <div class="difficulty-options">
+
+            <button class="difficulty" data-difficulty="slow">
+              <span class="diff-icon">☁</span>
+              <span>
+                <b>Slow</b>
+                <small>Easy &amp; cozy</small>
+              </span>
+              <span class="diff-arrow">↗</span>
+            </button>
+
+            <button class="difficulty selected" data-difficulty="normal">
+              <span class="diff-icon">✦</span>
+              <span>
+                <b>Normal</b>
+                <small>Just right</small>
+              </span>
+              <span class="diff-arrow">↗</span>
+            </button>
+
+            <button class="difficulty" data-difficulty="fast">
+              <span class="diff-icon">⚡</span>
+              <span>
+                <b>Fast</b>
+                <small>Full zoomies</small>
+              </span>
+              <span class="diff-arrow">↗</span>
+            </button>
+
+          </div>
+
+          <button class="primary-button" id="startButton">
+            START LOAFING <span>→</span>
+          </button>
+
+          <p class="controls-hint">
+            KEYS
+            <kbd>Q</kbd>
+            <kbd>W</kbd>
+            <kbd>E</kbd>
+            <kbd>R</kbd>
+            OR CLICK A LANE
+          </p>
+
+        </div>
+      </section>
+
+      <!-- Game Over scoreboard -->
+      <section
+        class="screen gameover-screen hidden"
+        id="gameOverScreen"
+      >
+        <div class="result-card">
+
+          <div class="result-kicker">
+            OH NO, THE LOAFS GOT AWAY
+          </div>
+
+          <div class="sleepy-cat">૮₍ ˶ᵔ ᵕ ᵔ˶ ₎ა</div>
+
+          <h2>Nap time!</h2>
+
+          <p class="result-sub">
+            The kitchen is closed. For now.
+          </p>
+
+          <div class="result-stats">
+
+            <div>
+              <span>FINAL SCORE</span>
+              <strong id="finalScore">0</strong>
+            </div>
+
+            <div>
+              <span>TIME SURVIVED</span>
+              <strong>
+                <span id="finalTime">0.0</span><small>s</small>
+              </strong>
+            </div>
+
+            <div>
+              <span>SESSION BEST</span>
+              <strong id="finalBest">0</strong>
+            </div>
+
+          </div>
+
+          <button class="primary-button" id="playAgainButton">
+            PLAY AGAIN <span>↻</span>
+          </button>
+
+          <button class="secondary-button" id="mainMenuButton">
+            MAIN MENU
+          </button>
+
+          <p class="background-note">
+            <span class="pulse-dot"></span>
+            THE LOAFS ARE STILL LOAFING IN THE BACKGROUND
+          </p>
+
+        </div>
+      </section>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <span>✿ MADE WITH PAWS &amp; PIXELS</span>
+      <span>STAY IN YOUR LANE <b>♡</b></span>
+    </footer>
+
+  </main>
+
+  <!-- Gameplay logic -->
+  <script src="script.js"></script>
+</body>
+</html>
