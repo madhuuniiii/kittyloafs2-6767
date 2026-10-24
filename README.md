@@ -1,2 +1,4 @@
 # kittyloafs2-6767
 kittyloafs2-6767 is a piano tiles inspired game but in a kitty theme with a touch of my style
+DETAILS:
+I have had this idea of a kitty themed tiles game in my notes app for a while now, so i am happy that code ignite helped motivate me to bring it into reality. I have first broken down my ideas and then i gave it to chat gpt, but gpt made an app of its own through my prompt and gave me the game to play??? [the game wasnt cutesy or accurately dipicted] so i shifted to google and then i gave the ai mode specific breakdowns of part of my code, and as the Technical Head said-type out your codes to get used to it, I heavily agreed with that statement so i typed them out by hand (most of the times) and added changes which i thought were necessary to make it my style in between. 
